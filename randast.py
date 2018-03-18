@@ -31,6 +31,10 @@ def p(astnode):
     print(ast.dump(astnode))
 
 
+def pp(string):
+    print(astor.dump_tree(ast.parse(string)))
+
+
 def random_binop():
     left = generate_literal()
     right = generate_literal()
