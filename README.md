@@ -14,8 +14,8 @@ Todo:
 * [ ] Literals
     * [x] number
     * [x] string
-    * [ ] formatted value
-    * [ ] joined string
+    * [x] formatted value
+    * [x] joined string
     * [x] bytes
     * [x] list
     * [x] tuple
