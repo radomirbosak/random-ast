@@ -37,20 +37,10 @@ def pp(string):
 
 
 def main():
-    # print AST representation
-    rbop = generate_expression(max_depth=2)
-    p(rbop)
-
-    expr = ast.Expression(rbop)
-    ast.fix_missing_locations(expr)
-
-    # print source
-    back_code = astor.code_gen.to_source(expr)
-    print(back_code)
-
-    # print evaluated result
-    a = eval(compile(expr, '', 'eval'))
-    print(a)
+    for _ in range(5):
+        expr = generate_expression(max_depth=2)
+        back_code = astor.code_gen.to_source(expr)
+        print(back_code)
 
 if __name__ == '__main__':
     main()
