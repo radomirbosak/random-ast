@@ -37,7 +37,7 @@ def pp(string):
 
 def main():
     # print AST representation
-    rbop = generate_expression()
+    rbop = generate_expression(max_depth=2)
     p(rbop)
 
     expr = ast.Expression(rbop)
