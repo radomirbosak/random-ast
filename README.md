@@ -21,7 +21,7 @@ Todo:
     * [ ] set
     * [ ] dict
     * [ ] ellipsis
-    * [ ] nameconstant
+    * [x] `True`, `False` and `None`
 * [ ] Variables
 * [ ] Expressions
 * [ ] Statements

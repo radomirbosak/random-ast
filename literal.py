@@ -18,12 +18,15 @@ def generate_string():
     return ast.Str(word)
 
 
+def generate_name_constant():
+    constant = random.choice([True, False, None])
+    return ast.NameConstant(constant)
+
+
 def generate_literal():
-    choices = ['num', 'str']
-    choice = random.choice(choices)
-    if choice == 'num':
-        return generate_num()
-    elif choice == 'str':
-        return generate_string()
-    else:
-        raise NotImplementedError
+    choices = [
+        generate_num,
+        generate_string,
+        generate_name_constant,
+    ]
+    return random.choice(choices)()
