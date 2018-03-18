@@ -1,11 +1,7 @@
 import ast
 import random
 
-
-def get_words():
-    with open('/usr/share/dict/words', 'r') as fd:
-        return [word.rstrip() for word in fd.readlines()]
-words = get_words()
+from words import generate_word
 
 
 def generate_num():
@@ -14,13 +10,11 @@ def generate_num():
 
 
 def generate_string():
-    word = random.choice(words)
-    return ast.Str(word)
+    return ast.Str(generate_word())
 
 
 def generate_bytes():
-    word = random.choice(words)
-    seq = word.encode('utf-8')
+    seq = generate_word().encode('utf-8')
     return ast.Bytes(seq)
 
 
