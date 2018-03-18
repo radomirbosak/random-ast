@@ -4,11 +4,12 @@ import random
 
 import astor
 
+from literal import generate_literal
 """
 compile_mode: exec, single, eval
 """
 
-ops = [
+bin_ops = [
     'Add',
     'BitAnd',
     'BitOr',
@@ -30,15 +31,12 @@ def p(astnode):
     print(ast.dump(astnode))
 
 
-def random_number():
-    r = random.randrange(5)
-    return ast.Num(r)
-
 def random_binop():
-    left = random_number()
-    right = random_number()
-    op = random.choice(ops)
+    left = generate_literal()
+    right = generate_literal()
+    op = random.choice(bin_ops)
     return ast.BinOp(left, getattr(ast, op)(), right)
+
 
 def main():
     # print AST representation

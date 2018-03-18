@@ -12,6 +12,16 @@ Resources:
 Todo:
 
 * [ ] Literals
+    * [x] number
+    * [x] string
+    * [ ] formatted value
+    * [ ] joined string
+    * [ ] list
+    * [ ] tuple
+    * [ ] set
+    * [ ] dict
+    * [ ] ellipsis
+    * [ ] nameconstant
 * [ ] Variables
 * [ ] Expressions
 * [ ] Statements
