@@ -18,8 +18,8 @@ Todo:
     * [ ] joined string
     * [x] bytes
     * [x] list
-    * [ ] tuple
-    * [ ] set
+    * [x] tuple
+    * [x] set
     * [ ] dict
     * [x] ellipsis
     * [x] `True`, `False` and `None`

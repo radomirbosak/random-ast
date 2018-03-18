@@ -36,6 +36,20 @@ def generate_list(max_depth=None):
     return ast.List(elts, ast.Load())
 
 
+def generate_tuple(max_depth=None):
+    from expression import generate_expression
+    length = random.randrange(MAX_LIST_LENGTH)
+    elts = [generate_expression(max_depth=max_depth - 1) for _ in range(length)]
+    return ast.Tuple(elts, ast.Load())
+
+
+def generate_set(max_depth=None):
+    from expression import generate_expression
+    length = random.randrange(MAX_LIST_LENGTH)
+    elts = [generate_expression(max_depth=max_depth - 1) for _ in range(length)]
+    return ast.Set(elts)
+
+
 def generate_literal(max_depth=None):
     flat_choices = [
         generate_num,
@@ -47,6 +61,8 @@ def generate_literal(max_depth=None):
 
     complex_choices = [
         generate_list,
+        generate_tuple,
+        generate_set,
     ]
 
     if max_depth >= 1:
