@@ -40,15 +40,21 @@ def random_binop():
     op = random.choice(ops)
     return ast.BinOp(left, getattr(ast, op)(), right)
 
-rbop = random_binop()
-p(rbop)
+def main():
+    # print AST representation
+    rbop = random_binop()
+    p(rbop)
 
-expr = ast.Expression(rbop)
-ast.fix_missing_locations(expr)
+    expr = ast.Expression(rbop)
+    ast.fix_missing_locations(expr)
 
-back_code = astor.code_gen.to_source(expr)
-print(back_code)
+    # print source
+    back_code = astor.code_gen.to_source(expr)
+    print(back_code)
 
-a = eval(compile(expr, '', 'eval'))
-print(a)
+    # print evaluated result
+    a = eval(compile(expr, '', 'eval'))
+    print(a)
 
+if __name__ == '__main__':
+    main()
