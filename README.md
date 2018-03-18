@@ -11,7 +11,7 @@ Resources:
 
 Todo:
 
-* [ ] Literals
+* [x] Literals
     * [x] number
     * [x] string
     * [x] formatted value
