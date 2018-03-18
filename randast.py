@@ -5,6 +5,7 @@ import random
 import astor
 
 from expression import generate_expression
+from literal import generate_list
 """
 compile_mode: exec, single, eval
 """

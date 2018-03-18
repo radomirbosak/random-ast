@@ -17,7 +17,7 @@ Todo:
     * [ ] formatted value
     * [ ] joined string
     * [x] bytes
-    * [ ] list
+    * [x] list
     * [ ] tuple
     * [ ] set
     * [ ] dict
