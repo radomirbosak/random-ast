@@ -4,7 +4,7 @@ import random
 
 import astor
 
-from literal import generate_literal
+from expression import generate_expression
 """
 compile_mode: exec, single, eval
 """
@@ -35,16 +35,9 @@ def pp(string):
     print(astor.dump_tree(ast.parse(string)))
 
 
-def random_binop():
-    left = generate_literal()
-    right = generate_literal()
-    op = random.choice(bin_ops)
-    return ast.BinOp(left, getattr(ast, op)(), right)
-
-
 def main():
     # print AST representation
-    rbop = random_binop()
+    rbop = generate_expression()
     p(rbop)
 
     expr = ast.Expression(rbop)

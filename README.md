@@ -24,6 +24,8 @@ Todo:
     * [x] ellipsis
     * [x] `True`, `False` and `None`
 * [ ] Variables
+    * [x] simple
+    * [ ] starred
 * [ ] Expressions
 * [ ] Statements
 * [ ] Control flow
