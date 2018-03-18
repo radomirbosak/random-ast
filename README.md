@@ -20,7 +20,7 @@ Todo:
     * [x] list
     * [x] tuple
     * [x] set
-    * [ ] dict
+    * [x] dict
     * [x] ellipsis
     * [x] `True`, `False` and `None`
 * [ ] Variables

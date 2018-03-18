@@ -50,6 +50,14 @@ def generate_set(max_depth=None):
     return ast.Set(elts)
 
 
+def generate_dict(max_depth=None):
+    from expression import generate_expression
+    length = random.randrange(MAX_LIST_LENGTH)
+    keys = [generate_expression(max_depth=max_depth - 1) for _ in range(length)]
+    values = [generate_expression(max_depth=max_depth - 1) for _ in range(length)]
+    return ast.Dict(keys, values)
+
+
 def generate_literal(max_depth=None):
     flat_choices = [
         generate_num,
@@ -63,6 +71,7 @@ def generate_literal(max_depth=None):
         generate_list,
         generate_tuple,
         generate_set,
+        generate_dict,
     ]
 
     if max_depth >= 1:
