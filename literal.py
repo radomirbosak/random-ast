@@ -18,6 +18,12 @@ def generate_string():
     return ast.Str(word)
 
 
+def generate_bytes():
+    word = random.choice(words)
+    seq = word.encode('utf-8')
+    return ast.Bytes(seq)
+
+
 def generate_ellipsis():
     return ast.Ellipsis()
 
@@ -31,6 +37,7 @@ def generate_literal():
     choices = [
         generate_num,
         generate_string,
+        generate_bytes,
         generate_ellipsis,
         generate_name_constant,
     ]

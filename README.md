@@ -16,6 +16,7 @@ Todo:
     * [x] string
     * [ ] formatted value
     * [ ] joined string
+    * [x] bytes
     * [ ] list
     * [ ] tuple
     * [ ] set
