@@ -27,6 +27,20 @@ Todo:
     * [x] simple
     * [ ] starred
 * [ ] Expressions
+    * [x] unary operations
+    * [ ] binary operations
+    * [ ] bool operations
+    * [ ] comparisons
+    * [ ] function call
+    * [ ] inline if expression
+    * [ ] attribute access
+    * [ ] index subscripting
+    * [ ] slice subscripting
+    * [ ] advanced slicing
+    * [ ] list comprehension
+    * [ ] set comprehension
+    * [ ] generator expression
+    * [ ] dict comprehension
 * [ ] Statements
 * [ ] Control flow
 * [ ] Function and class definitions
