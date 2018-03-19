@@ -42,6 +42,33 @@ Todo:
     * [ ] generator expression
     * [ ] dict comprehension
 * [ ] Statements
+    * [ ] assignment
+    * [ ] annotated assignment
+    * [ ] augmented assignment
+    * [ ] print
+    * [ ] raise
+    * [ ] assert
+    * [ ] delete
+    * [ ] pass
+    * [ ] import
+    * [ ] import from
 * [ ] Control flow
+    * [ ] if block
+    * [ ] for loop
+    * [ ] while loop
+    * [ ] break
+    * [ ] continue
+    * [ ] try blocks
+    * [ ] context managers
 * [ ] Function and class definitions
+    * [ ] function definition
+    * [ ] lambda function
+    * [ ] return statement
+    * [ ] yield, yield from
+    * [ ] global, nonlocal
+    * [ ] class definition
 * [ ] Async and await
+    * [ ] async function definition
+    * [ ] await expression
+    * [ ] async for loop
+    * [ ] async context managers
