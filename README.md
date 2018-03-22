@@ -1,6 +1,6 @@
 # random-ast
 
-Generates random python scripts
+Generates random python 3.6 scripts
 
 ![random-ast screenshot](screenshot.png)
 
