@@ -20,6 +20,19 @@ binary_ops = [
     ast.BitAnd,
     ast.MatMult,
 ]
+bool_ops = [ast.Or, ast.And]
+comparisons = [
+    ast.Eq,
+    ast.NotEq,
+    ast.Lt,
+    ast.LtE,
+    ast.Gt,
+    ast.GtE,
+    ast.Is,
+    ast.IsNot,
+    ast.In,
+    ast.NotIn,
+]
 
 
 def generate_expression(max_depth=None):
@@ -32,6 +45,7 @@ def generate_expression(max_depth=None):
             generate_unary_op,
             generate_binary_op,
             generate_bool_op,
+            generate_comparison,
         ]
 
     return random.choice(choices)(max_depth=max_depth)
@@ -51,8 +65,17 @@ def generate_binary_op(max_depth=None):
 
 
 def generate_bool_op(max_depth=None):
-    op = random.choice([ast.Or, ast.And])
-    length = random.randrange(MAX_LIST_LENGTH)
+    op = random.choice(bool_ops)
+    length = max(2, random.randrange(0, MAX_LIST_LENGTH))
 
     values = [generate_expression(max_depth=max_depth - 1) for _ in range(length)]
     return ast.BoolOp(op(), values)
+
+
+def generate_comparison(max_depth=None):
+    length = max(2, random.randrange(0, MAX_LIST_LENGTH))
+
+    ops = [op() for op in random.choices(comparisons, k=length - 1)]
+    left, *comparators = [generate_expression(max_depth=max_depth - 1) for _ in range(length)]
+
+    return ast.Compare(left, ops, comparators)

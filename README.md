@@ -30,7 +30,7 @@ Todo:
     * [x] unary operations
     * [x] binary operations
     * [x] bool operations
-    * [ ] comparisons
+    * [x] comparisons
     * [ ] function call
     * [ ] inline if expression
     * [ ] attribute access
