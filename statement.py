@@ -20,6 +20,7 @@ def generate_statement(max_depth=None):
         generate_raise,
         generate_assert,
         generate_delete,
+        generate_pass,
     ]
     return random.choice(choices)(max_depth=max_depth)
 
@@ -56,11 +57,15 @@ def generate_delete(max_depth=None):
     num_nodes = random.randrange(1, 4)
 
     choices = [
-        generate_variable(max_depth=max_depth, ctx=ast.Store()),
-        generate_attribute(max_depth=max_depth, ctx=ast.Store()),
-        generate_subscript(max_depth=max_depth, ctx=ast.Store()),
+        generate_variable,
+        generate_attribute,
+        generate_subscript,
     ]
 
-    targets = random.choices(choices, k=num_nodes)
+    targets = [tar(max_depth=max_depth, ctx=ast.Store()) for tar in random.choices(choices, k=num_nodes)]
 
     return ast.Delete(targets)
+
+
+def generate_pass(max_depth=None):
+    return ast.Pass()
