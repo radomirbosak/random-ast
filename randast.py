@@ -6,6 +6,7 @@ import astor
 
 from expression import generate_expression
 from statement import generate_statement
+from control_flow import generate_block
 from literal import generate_list
 """
 compile_mode: exec, single, eval
@@ -38,10 +39,15 @@ def pp(string):
 
 
 def main():
-    for _ in range(5):
-        expr = generate_statement(max_depth=2)
+    for module_idx in range(3):
+        expr = generate_block(max_depth=3)
+        if isinstance(expr, list):
+            expr = ast.Module(body=expr)
         back_code = astor.code_gen.to_source(expr)
+        print(f'# Module {module_idx}:')
         print(back_code)
+        print()
+
 
 if __name__ == '__main__':
     main()

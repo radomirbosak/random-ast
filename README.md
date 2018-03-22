@@ -53,6 +53,7 @@ Todo:
     * [x] import
     * [x] import from
 * [ ] Control flow
+    * [x] blocks of code
     * [ ] if block
     * [ ] for loop
     * [ ] while loop
