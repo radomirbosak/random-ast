@@ -53,6 +53,7 @@ def generate_expression(max_depth=None):
             generate_inline_if,
             generate_attribute,
             generate_subscript,
+            generate_comprehension,
         ]
 
     return random.choice(choices)(max_depth=max_depth)
@@ -161,3 +162,33 @@ def generate_subscript(max_depth=None):
     slice_gen = random.choice(choices)
     sl = slice_gen(max_depth=max_depth)
     return ast.Subscript(value=value, slice=sl, ctx=ast.Load())
+
+
+def _generate_comprehension(max_depth=None):
+    target = generate_variable(max_depth=max_depth - 1)
+    iterable = generate_expression(max_depth=max_depth - 1)
+
+    ifs = [generate_expression(max_depth=max_depth - 1)]
+
+    return ast.comprehension(target=target, iter=iterable, ifs=ifs)
+
+
+def generate_comprehension(max_depth=None):
+    num_generators = random.choice([1, 1, 1, 2])
+    generators = [_generate_comprehension(max_depth=max_depth) for _ in range(num_generators)]
+
+    compr_class = random.choice([
+        ast.ListComp,
+        ast.SetComp,
+        ast.GeneratorExp,
+        ast.DictComp,
+    ])
+
+    if compr_class is ast.DictComp:
+        key = generate_expression(max_depth=max_depth - 1)
+        value = generate_expression(max_depth=max_depth - 1)
+        return compr_class(key=key, value=value, generators=generators)
+
+    # all other comprehensions
+    elt = generate_expression(max_depth=max_depth - 1)
+    return compr_class(elt=elt, generators=generators)

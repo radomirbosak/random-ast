@@ -37,10 +37,10 @@ Todo:
     * [x] index subscripting
     * [x] slice subscripting
     * [x] advanced slicing
-    * [ ] list comprehension
-    * [ ] set comprehension
-    * [ ] generator expression
-    * [ ] dict comprehension
+    * [x] list comprehension
+    * [x] set comprehension
+    * [x] generator expression
+    * [x] dict comprehension
 * [ ] Statements
     * [ ] assignment
     * [ ] annotated assignment
