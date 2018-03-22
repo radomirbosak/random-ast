@@ -26,7 +26,7 @@ Todo:
 * [x] Variables
     * [x] simple
     * [x] starred
-* [ ] Expressions
+* [x] Expressions
     * [x] unary operations
     * [x] binary operations
     * [x] bool operations
