@@ -50,7 +50,8 @@ def generate_expression(max_depth=None):
             generate_bool_op,
             generate_comparison,
             generate_function_call,
-            generate_inline_if
+            generate_inline_if,
+            generate_attribute,
         ]
 
     return random.choice(choices)(max_depth=max_depth)
@@ -118,3 +119,10 @@ def generate_inline_if(max_depth=None):
     orelse = generate_expression(max_depth=max_depth - 1)
 
     return ast.IfExp(test, body, orelse)
+
+
+def generate_attribute(max_depth=None):
+    value = generate_expression(max_depth=max_depth - 1)
+    attr = generate_variable_name()
+
+    return ast.Attribute(value, attr, ast.Load())

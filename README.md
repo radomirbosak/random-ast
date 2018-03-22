@@ -33,7 +33,7 @@ Todo:
     * [x] comparisons
     * [x] function call
     * [x] inline if expression
-    * [ ] attribute access
+    * [x] attribute access
     * [ ] index subscripting
     * [ ] slice subscripting
     * [ ] advanced slicing
