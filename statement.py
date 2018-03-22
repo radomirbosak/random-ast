@@ -1,8 +1,8 @@
 import ast
 import random
 
-from expression import generate_expression
-from variable import generate_variable_or_tuple
+from expression import generate_expression, binary_ops
+from variable import generate_variable, generate_variable_or_tuple
 
 
 def generate_assign(max_depth=None):
@@ -14,5 +14,30 @@ def generate_assign(max_depth=None):
 def generate_statement(max_depth=None):
     choices = [
         generate_assign,
+        generate_annotated_assign,
+        generate_augmented_assign,
+        generate_raise,
     ]
     return random.choice(choices)(max_depth=max_depth)
+
+
+def generate_annotated_assign(max_depth=None):
+    value = generate_expression(max_depth=max_depth)
+    target = generate_variable(max_depth=max_depth, ctx=ast.Store())
+    annotation = generate_variable(max_depth=max_depth)
+    return ast.AnnAssign(target, annotation, value, 1)
+
+
+def generate_augmented_assign(max_depth=None):
+    value = generate_expression(max_depth=max_depth)
+    target = generate_variable(max_depth=max_depth, ctx=ast.Store())
+
+    op = random.choice(binary_ops)()
+
+    return ast.AugAssign(target, op, value)
+
+
+def generate_raise(max_depth=None):
+    exc = generate_variable()
+    cause = random.choice([generate_variable(), None])
+    return ast.Raise(exc, cause)
