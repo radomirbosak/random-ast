@@ -52,6 +52,7 @@ def generate_expression(max_depth=None):
             generate_function_call,
             generate_inline_if,
             generate_attribute,
+            generate_subscript_simple,
         ]
 
     return random.choice(choices)(max_depth=max_depth)
@@ -126,3 +127,10 @@ def generate_attribute(max_depth=None):
     attr = generate_variable_name()
 
     return ast.Attribute(value, attr, ast.Load())
+
+
+def generate_subscript_simple(max_depth=None):
+    value = generate_expression(max_depth=max_depth - 1)
+    index = ast.Index(generate_expression(max_depth=max_depth - 1))
+
+    return ast.Subscript(value=value, slice=index, ctx=ast.Load())

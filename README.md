@@ -34,7 +34,7 @@ Todo:
     * [x] function call
     * [x] inline if expression
     * [x] attribute access
-    * [ ] index subscripting
+    * [x] index subscripting
     * [ ] slice subscripting
     * [ ] advanced slicing
     * [ ] list comprehension
