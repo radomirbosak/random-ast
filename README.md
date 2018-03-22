@@ -29,7 +29,7 @@ Todo:
 * [ ] Expressions
     * [x] unary operations
     * [x] binary operations
-    * [ ] bool operations
+    * [x] bool operations
     * [ ] comparisons
     * [ ] function call
     * [ ] inline if expression

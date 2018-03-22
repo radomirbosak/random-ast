@@ -2,7 +2,7 @@ import ast
 import random
 
 from variable import generate_variable
-from literal import generate_literal
+from literal import generate_literal, MAX_LIST_LENGTH
 
 unary_ops = [ast.UAdd, ast.USub, ast.Not, ast.Invert]
 binary_ops = [
@@ -28,7 +28,11 @@ def generate_expression(max_depth=None):
         generate_literal,
     ]
     if max_depth >= 1:
-        choices += [generate_unary_op, generate_binary_op]
+        choices += [
+            generate_unary_op,
+            generate_binary_op,
+            generate_bool_op,
+        ]
 
     return random.choice(choices)(max_depth=max_depth)
 
@@ -44,3 +48,11 @@ def generate_binary_op(max_depth=None):
     right = generate_expression(max_depth=max_depth - 1)
     op = random.choice(binary_ops)
     return ast.BinOp(left, op(), right)
+
+
+def generate_bool_op(max_depth=None):
+    op = random.choice([ast.Or, ast.And])
+    length = random.randrange(MAX_LIST_LENGTH)
+
+    values = [generate_expression(max_depth=max_depth - 1) for _ in range(length)]
+    return ast.BoolOp(op(), values)
