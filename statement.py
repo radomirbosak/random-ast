@@ -3,6 +3,7 @@ import random
 
 from expression import generate_expression, binary_ops
 from variable import generate_variable, generate_variable_or_tuple
+from literal import generate_string
 
 
 def generate_assign(max_depth=None):
@@ -17,6 +18,7 @@ def generate_statement(max_depth=None):
         generate_annotated_assign,
         generate_augmented_assign,
         generate_raise,
+        generate_assert,
     ]
     return random.choice(choices)(max_depth=max_depth)
 
@@ -41,3 +43,10 @@ def generate_raise(max_depth=None):
     exc = generate_variable()
     cause = random.choice([generate_variable(), None])
     return ast.Raise(exc, cause)
+
+
+def generate_assert(max_depth=None):
+    test = generate_expression(max_depth=max_depth)
+    msg = random.choice([generate_string(), None])
+
+    return ast.Assert(test, msg)
