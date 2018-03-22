@@ -39,7 +39,7 @@ def pp(string):
 
 
 def main():
-    for module_idx in range(3):
+    for module_idx in range(1):
         expr = generate_block(max_depth=3)
         if isinstance(expr, list):
             expr = ast.Module(body=expr)

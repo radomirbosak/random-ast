@@ -54,7 +54,7 @@ Todo:
     * [x] import from
 * [ ] Control flow
     * [x] blocks of code
-    * [ ] if block
+    * [x] if block
     * [ ] for loop
     * [ ] while loop
     * [ ] break
