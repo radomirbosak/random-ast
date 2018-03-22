@@ -32,7 +32,7 @@ Todo:
     * [x] bool operations
     * [x] comparisons
     * [x] function call
-    * [ ] inline if expression
+    * [x] inline if expression
     * [ ] attribute access
     * [ ] index subscripting
     * [ ] slice subscripting

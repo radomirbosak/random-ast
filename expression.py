@@ -50,6 +50,7 @@ def generate_expression(max_depth=None):
             generate_bool_op,
             generate_comparison,
             generate_function_call,
+            generate_inline_if
         ]
 
     return random.choice(choices)(max_depth=max_depth)
@@ -109,3 +110,11 @@ def generate_function_call(max_depth=None):
 
     name = generate_variable()
     return ast.Call(func=name, args=args, keywords=kwargs)
+
+
+def generate_inline_if(max_depth=None):
+    test = generate_expression(max_depth=max_depth - 1)
+    body = generate_expression(max_depth=max_depth - 1)
+    orelse = generate_expression(max_depth=max_depth - 1)
+
+    return ast.IfExp(test, body, orelse)
