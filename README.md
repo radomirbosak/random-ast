@@ -23,7 +23,7 @@ Todo:
     * [x] dict
     * [x] ellipsis
     * [x] `True`, `False` and `None`
-* [ ] Variables
+* [x] Variables
     * [x] simple
     * [x] starred
 * [ ] Expressions
