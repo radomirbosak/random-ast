@@ -56,7 +56,7 @@ Todo:
     * [x] blocks of code
     * [x] if block
     * [x] for loop
-    * [ ] while loop
+    * [x] while loop
     * [ ] break
     * [ ] continue
     * [ ] try blocks

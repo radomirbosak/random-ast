@@ -13,11 +13,15 @@ def generate_block(max_depth=None):
     num_statements = random.randrange(1, MAX_STATEMENTS)
     choices = [
         generate_statement,
+        generate_statement,
+        generate_statement,
+        generate_statement,
     ]
     if max_depth >= 1:
         choices += [
             generate_if,
             generate_for,
+            generate_while,
         ]
 
     nodes = random.choices(choices, k=num_statements)
@@ -38,3 +42,10 @@ def generate_for(max_depth=None):
     body = generate_block(max_depth=max_depth)
     orelse = random.choice([generate_block(max_depth=max_depth), []])
     return ast.For(target, iter, body, orelse)
+
+
+def generate_while(max_depth=None):
+    test = generate_expression(max_depth=max_depth)
+    body = generate_block(max_depth=max_depth)
+    orelse = random.choice([generate_block(max_depth=max_depth), []])
+    return ast.While(test, body, orelse)
