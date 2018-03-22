@@ -24,6 +24,7 @@ def generate_block(max_depth=None):
             generate_for,
             generate_while,
             generate_try,
+            generate_with,
         ]
 
     nodes = random.choices(choices, k=num_statements)
@@ -68,3 +69,15 @@ def generate_try(max_depth=None):
     orelse = random.choice([generate_block(max_depth=max_depth), []])
     finalbody = random.choice([generate_block(max_depth=max_depth), []])
     return ast.Try(body, handlers, orelse, finalbody)
+
+
+def _generate_with_item(max_depth=None):
+    context_expr = generate_expression(max_depth=max_depth)
+    optional_vars = generate_variable_or_tuple()
+    return ast.withitem(context_expr, optional_vars)
+
+def generate_with(max_depth=None):
+    num_items = random.randrange(1, 3)
+    items = [_generate_with_item(max_depth=max_depth) for _ in range(num_items)]
+    body = generate_block(max_depth=max_depth)
+    return ast.With(items, body)
