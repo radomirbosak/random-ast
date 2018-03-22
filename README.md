@@ -55,7 +55,7 @@ Todo:
 * [ ] Control flow
     * [x] blocks of code
     * [x] if block
-    * [ ] for loop
+    * [x] for loop
     * [ ] while loop
     * [ ] break
     * [ ] continue
