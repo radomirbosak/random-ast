@@ -35,7 +35,7 @@ Todo:
     * [x] inline if expression
     * [x] attribute access
     * [x] index subscripting
-    * [ ] slice subscripting
+    * [x] slice subscripting
     * [ ] advanced slicing
     * [ ] list comprehension
     * [ ] set comprehension

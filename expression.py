@@ -53,6 +53,7 @@ def generate_expression(max_depth=None):
             generate_inline_if,
             generate_attribute,
             generate_subscript_simple,
+            generate_subscript_slice,
         ]
 
     return random.choice(choices)(max_depth=max_depth)
@@ -134,3 +135,13 @@ def generate_subscript_simple(max_depth=None):
     index = ast.Index(generate_expression(max_depth=max_depth - 1))
 
     return ast.Subscript(value=value, slice=index, ctx=ast.Load())
+
+
+def generate_subscript_slice(max_depth=None):
+    value = generate_expression(max_depth=max_depth - 1)
+    upper = generate_expression(max_depth=max_depth - 1)
+    lower = generate_expression(max_depth=max_depth - 1)
+    step = generate_expression(max_depth=max_depth - 1)
+
+    slice_obj = ast.Slice(lower=lower, upper=upper, step=step)
+    return ast.Subscript(value=value, slice=slice_obj, ctx=ast.Load())
