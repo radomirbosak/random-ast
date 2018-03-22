@@ -1,8 +1,11 @@
 import ast
 import random
 
+from words import generate_variable_name
 from variable import generate_variable
 from literal import generate_literal, MAX_LIST_LENGTH
+
+MAX_ARGS_LENGTH = 3
 
 unary_ops = [ast.UAdd, ast.USub, ast.Not, ast.Invert]
 binary_ops = [
@@ -46,6 +49,7 @@ def generate_expression(max_depth=None):
             generate_binary_op,
             generate_bool_op,
             generate_comparison,
+            generate_function_call,
         ]
 
     return random.choice(choices)(max_depth=max_depth)
@@ -79,3 +83,29 @@ def generate_comparison(max_depth=None):
     left, *comparators = [generate_expression(max_depth=max_depth - 1) for _ in range(length)]
 
     return ast.Compare(left, ops, comparators)
+
+
+def _generate_keyword(max_depth=None, starred=False):
+    argname = generate_variable_name() if not starred else None
+    value = generate_expression(max_depth=max_depth - 1)
+    return ast.keyword(arg=argname, value=value)
+
+
+def generate_function_call(max_depth=None):
+    args_len = random.randrange(MAX_ARGS_LENGTH)
+    kwargs_len = random.randrange(MAX_ARGS_LENGTH)
+
+    starred_args = random.choice([False, True])
+    starred_kwargs = random.choice([False, True])
+
+    args = [generate_expression(max_depth=max_depth - 1) for _ in range(args_len)]
+    if starred_args:
+        starred = ast.Starred(generate_expression(max_depth=max_depth - 1), ast.Load)
+        args.append(starred)
+
+    kwargs = [_generate_keyword(max_depth=max_depth) for _ in range(kwargs_len)]
+    if starred_kwargs:
+        kwargs.append(_generate_keyword(max_depth=max_depth, starred=True))
+
+    name = generate_variable()
+    return ast.Call(func=name, args=args, keywords=kwargs)

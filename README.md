@@ -25,13 +25,13 @@ Todo:
     * [x] `True`, `False` and `None`
 * [ ] Variables
     * [x] simple
-    * [ ] starred
+    * [x] starred
 * [ ] Expressions
     * [x] unary operations
     * [x] binary operations
     * [x] bool operations
     * [x] comparisons
-    * [ ] function call
+    * [x] function call
     * [ ] inline if expression
     * [ ] attribute access
     * [ ] index subscripting
