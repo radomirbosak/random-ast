@@ -59,7 +59,7 @@ Todo:
     * [x] while loop
     * [x] break
     * [x] continue
-    * [ ] try blocks
+    * [x] try blocks
     * [ ] context managers
 * [ ] Function and class definitions
     * [ ] function definition
