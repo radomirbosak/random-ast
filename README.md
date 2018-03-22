@@ -36,7 +36,7 @@ Todo:
     * [x] attribute access
     * [x] index subscripting
     * [x] slice subscripting
-    * [ ] advanced slicing
+    * [x] advanced slicing
     * [ ] list comprehension
     * [ ] set comprehension
     * [ ] generator expression

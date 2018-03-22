@@ -52,8 +52,7 @@ def generate_expression(max_depth=None):
             generate_function_call,
             generate_inline_if,
             generate_attribute,
-            generate_subscript_simple,
-            generate_subscript_slice,
+            generate_subscript,
         ]
 
     return random.choice(choices)(max_depth=max_depth)
@@ -130,18 +129,35 @@ def generate_attribute(max_depth=None):
     return ast.Attribute(value, attr, ast.Load())
 
 
-def generate_subscript_simple(max_depth=None):
-    value = generate_expression(max_depth=max_depth - 1)
-    index = ast.Index(generate_expression(max_depth=max_depth - 1))
-
-    return ast.Subscript(value=value, slice=index, ctx=ast.Load())
+def _generate_index_slice(max_depth=None):
+    return ast.Index(generate_expression(max_depth=max_depth - 1))
 
 
-def generate_subscript_slice(max_depth=None):
-    value = generate_expression(max_depth=max_depth - 1)
+def _generate_simple_slice(max_depth=None):
     upper = generate_expression(max_depth=max_depth - 1)
     lower = generate_expression(max_depth=max_depth - 1)
     step = generate_expression(max_depth=max_depth - 1)
 
-    slice_obj = ast.Slice(lower=lower, upper=upper, step=step)
-    return ast.Subscript(value=value, slice=slice_obj, ctx=ast.Load())
+    return ast.Slice(lower=lower, upper=upper, step=step)
+
+
+def _generate_extended_slice(max_depth=None):
+    choices = [
+        _generate_index_slice,
+        _generate_simple_slice,
+    ]
+    dims_len = random.randrange(2, 4)
+    dims = [sl(max_depth=max_depth - 1) for sl in random.choices(choices, k=dims_len)]
+    return ast.ExtSlice(dims)
+
+
+def generate_subscript(max_depth=None):
+    value = generate_expression(max_depth=max_depth)
+    choices = [
+        _generate_index_slice,
+        _generate_simple_slice,
+        _generate_extended_slice,
+    ]
+    slice_gen = random.choice(choices)
+    sl = slice_gen(max_depth=max_depth)
+    return ast.Subscript(value=value, slice=sl, ctx=ast.Load())
