@@ -41,17 +41,17 @@ Todo:
     * [x] set comprehension
     * [x] generator expression
     * [x] dict comprehension
-* [ ] Statements
+* [x] Statements
     * [x] assignment
-    * [ ] annotated assignment
-    * [ ] augmented assignment
-    * [ ] print
-    * [ ] raise
-    * [ ] assert
-    * [ ] delete
-    * [ ] pass
-    * [ ] import
-    * [ ] import from
+    * [x] annotated assignment
+    * [x] augmented assignment
+    * [x] print
+    * [x] raise
+    * [x] assert
+    * [x] delete
+    * [x] pass
+    * [x] import
+    * [x] import from
 * [ ] Control flow
     * [ ] if block
     * [ ] for loop
