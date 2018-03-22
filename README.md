@@ -28,7 +28,7 @@ Todo:
     * [ ] starred
 * [ ] Expressions
     * [x] unary operations
-    * [ ] binary operations
+    * [x] binary operations
     * [ ] bool operations
     * [ ] comparisons
     * [ ] function call
