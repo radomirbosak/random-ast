@@ -57,8 +57,8 @@ Todo:
     * [x] if block
     * [x] for loop
     * [x] while loop
-    * [ ] break
-    * [ ] continue
+    * [x] break
+    * [x] continue
     * [ ] try blocks
     * [ ] context managers
 * [ ] Function and class definitions

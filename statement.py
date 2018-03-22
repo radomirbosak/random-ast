@@ -24,6 +24,8 @@ def generate_statement(max_depth=None):
         generate_pass,
         generate_import,
         generate_import_from,
+        generate_break,
+        generate_continue,
     ]
     return random.choice(choices)(max_depth=max_depth)
 
@@ -100,3 +102,11 @@ def generate_import_from(max_depth=None):
     names = [_generate_alias() for _ in range(num_names)]
 
     return ast.ImportFrom(module, names, level)
+
+
+def generate_break(max_depth=None):
+    return ast.Break()
+
+
+def generate_continue(max_depth=None):
+    return ast.Continue()
