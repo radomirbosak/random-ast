@@ -42,7 +42,7 @@ Todo:
     * [x] generator expression
     * [x] dict comprehension
 * [ ] Statements
-    * [ ] assignment
+    * [x] assignment
     * [ ] annotated assignment
     * [ ] augmented assignment
     * [ ] print

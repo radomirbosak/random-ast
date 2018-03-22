@@ -5,6 +5,7 @@ import random
 import astor
 
 from expression import generate_expression
+from statement import generate_statement
 from literal import generate_list
 """
 compile_mode: exec, single, eval
@@ -38,7 +39,7 @@ def pp(string):
 
 def main():
     for _ in range(5):
-        expr = generate_expression(max_depth=2)
+        expr = generate_statement(max_depth=2)
         back_code = astor.code_gen.to_source(expr)
         print(back_code)
 
