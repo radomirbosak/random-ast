@@ -123,11 +123,11 @@ def generate_inline_if(max_depth=None):
     return ast.IfExp(test, body, orelse)
 
 
-def generate_attribute(max_depth=None):
+def generate_attribute(max_depth=None, ctx=ast.Load()):
     value = generate_expression(max_depth=max_depth - 1)
     attr = generate_variable_name()
 
-    return ast.Attribute(value, attr, ast.Load())
+    return ast.Attribute(value, attr, ctx)
 
 
 def _generate_index_slice(max_depth=None):
@@ -152,7 +152,7 @@ def _generate_extended_slice(max_depth=None):
     return ast.ExtSlice(dims)
 
 
-def generate_subscript(max_depth=None):
+def generate_subscript(max_depth=None, ctx=ast.Load()):
     value = generate_expression(max_depth=max_depth)
     choices = [
         _generate_index_slice,
@@ -161,7 +161,7 @@ def generate_subscript(max_depth=None):
     ]
     slice_gen = random.choice(choices)
     sl = slice_gen(max_depth=max_depth)
-    return ast.Subscript(value=value, slice=sl, ctx=ast.Load())
+    return ast.Subscript(value=value, slice=sl, ctx=ctx)
 
 
 def _generate_comprehension(max_depth=None):
