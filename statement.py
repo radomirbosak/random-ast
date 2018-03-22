@@ -4,6 +4,7 @@ import random
 from expression import generate_expression, binary_ops, generate_subscript, generate_attribute
 from variable import generate_variable, generate_variable_or_tuple
 from literal import generate_string
+from words import generate_variable_name
 
 
 def generate_assign(max_depth=None):
@@ -21,6 +22,8 @@ def generate_statement(max_depth=None):
         generate_assert,
         generate_delete,
         generate_pass,
+        generate_import,
+        generate_import_from,
     ]
     return random.choice(choices)(max_depth=max_depth)
 
@@ -69,3 +72,31 @@ def generate_delete(max_depth=None):
 
 def generate_pass(max_depth=None):
     return ast.Pass()
+
+
+def _generate_alias():
+    name = generate_variable_name()
+    asname = random.choice([generate_variable_name(), None])
+    return ast.alias(name, asname)
+
+
+def _generate_module_name():
+    num_parts = random.randrange(1, 4)
+    names = [generate_variable_name() for _ in range(num_parts)]
+    return '.'.join(names)
+
+
+def generate_import(max_depth=None):
+    num_names = random.randrange(1, 4)
+    names = [_generate_alias() for _ in range(num_names)]
+
+    return ast.Import(names)
+
+
+def generate_import_from(max_depth=None):
+    module = _generate_module_name()
+    level = random.randrange(3)
+    num_names = random.randrange(1, 4)
+    names = [_generate_alias() for _ in range(num_names)]
+
+    return ast.ImportFrom(module, names, level)
