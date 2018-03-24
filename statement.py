@@ -27,6 +27,8 @@ def generate_statement(max_depth=None):
         generate_break,
         generate_continue,
         generate_return,
+        generate_yield,
+        generate_yeild_from,
     ]
     return random.choice(choices)(max_depth=max_depth)
 
@@ -115,3 +117,11 @@ def generate_continue(max_depth=None):
 
 def generate_return(max_depth=None):
     return ast.Return(generate_expression(max_depth=max_depth - 1))
+
+
+def generate_yield(max_depth=None):
+    return ast.Expr(ast.Yield(generate_expression(max_depth=max_depth - 1)))
+
+
+def generate_yeild_from(max_depth=None):
+    return ast.Expr(ast.YieldFrom(generate_variable()))
