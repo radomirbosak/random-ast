@@ -29,6 +29,8 @@ def generate_statement(max_depth=None):
         generate_return,
         generate_yield,
         generate_yeild_from,
+        generate_global,
+        generate_nonlocal,
     ]
     return random.choice(choices)(max_depth=max_depth)
 
@@ -125,3 +127,15 @@ def generate_yield(max_depth=None):
 
 def generate_yeild_from(max_depth=None):
     return ast.Expr(ast.YieldFrom(generate_variable()))
+
+
+def generate_global(max_depth=None):
+    num_names = random.choice([1, 1, 1, 1, 1, 2, 2, 3])
+    names = [generate_variable_name() for _ in range(num_names)]
+    return ast.Global(names)
+
+
+def generate_nonlocal(max_depth=None):
+    num_names = random.choice([1, 1, 1, 1, 1, 2, 2, 3])
+    names = [generate_variable_name() for _ in range(num_names)]
+    return ast.Nonlocal(names)

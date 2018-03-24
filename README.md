@@ -66,7 +66,7 @@ Todo:
     * [x] lambda function
     * [x] return statement
     * [x] yield, yield from
-    * [ ] global, nonlocal
+    * [x] global, nonlocal
     * [ ] class definition
 * [ ] Async and await
     * [ ] async function definition
