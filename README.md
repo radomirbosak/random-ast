@@ -62,7 +62,7 @@ Todo:
     * [x] try blocks
     * [x] context managers
 * [ ] Function and class definitions
-    * [ ] function definition
+    * [x] function definition
     * [ ] lambda function
     * [ ] return statement
     * [ ] yield, yield from
