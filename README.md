@@ -63,7 +63,7 @@ Todo:
     * [x] context managers
 * [ ] Function and class definitions
     * [x] function definition
-    * [ ] lambda function
+    * [x] lambda function
     * [ ] return statement
     * [ ] yield, yield from
     * [ ] global, nonlocal

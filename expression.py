@@ -5,6 +5,7 @@ from words import generate_variable_name
 from variable import generate_variable
 from literal import generate_literal, MAX_LIST_LENGTH
 
+
 MAX_ARGS_LENGTH = 3
 
 unary_ops = [ast.UAdd, ast.USub, ast.Not, ast.Invert]
@@ -54,6 +55,7 @@ def generate_expression(max_depth=None):
             generate_attribute,
             generate_subscript,
             generate_comprehension,
+            generate_lambda,
         ]
 
     return random.choice(choices)(max_depth=max_depth)
@@ -192,3 +194,9 @@ def generate_comprehension(max_depth=None):
     # all other comprehensions
     elt = generate_expression(max_depth=max_depth - 1)
     return compr_class(elt=elt, generators=generators)
+
+def generate_lambda(max_depth=None):
+    from function_class import _generate_arguments
+    args = _generate_arguments(max_depth=max_depth)
+    body = generate_expression(max_depth=max_depth - 1)
+    return ast.Lambda(args, body)
