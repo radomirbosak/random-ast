@@ -64,7 +64,7 @@ Todo:
 * [ ] Function and class definitions
     * [x] function definition
     * [x] lambda function
-    * [ ] return statement
+    * [x] return statement
     * [ ] yield, yield from
     * [ ] global, nonlocal
     * [ ] class definition

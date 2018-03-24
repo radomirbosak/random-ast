@@ -26,6 +26,7 @@ def generate_statement(max_depth=None):
         generate_import_from,
         generate_break,
         generate_continue,
+        generate_return,
     ]
     return random.choice(choices)(max_depth=max_depth)
 
@@ -110,3 +111,7 @@ def generate_break(max_depth=None):
 
 def generate_continue(max_depth=None):
     return ast.Continue()
+
+
+def generate_return(max_depth=None):
+    return ast.Return(generate_expression(max_depth=max_depth - 1))
