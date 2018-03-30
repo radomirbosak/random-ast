@@ -68,8 +68,8 @@ Todo:
     * [x] yield, yield from
     * [x] global, nonlocal
     * [x] class definition
-* [ ] Async and await
+* [x] Async and await
     * [x] async function definition
     * [x] await expression
     * [x] async for loop
-    * [ ] async context managers
+    * [x] async context managers
