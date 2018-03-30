@@ -31,6 +31,7 @@ def generate_statement(max_depth=None):
         generate_yeild_from,
         generate_global,
         generate_nonlocal,
+        generate_await,
     ]
     return random.choice(choices)(max_depth=max_depth)
 
@@ -139,3 +140,7 @@ def generate_nonlocal(max_depth=None):
     num_names = random.choice([1, 1, 1, 1, 1, 2, 2, 3])
     names = [generate_variable_name() for _ in range(num_names)]
     return ast.Nonlocal(names)
+
+
+def generate_await(max_depth=None):
+    return ast.Expr(ast.Await(generate_expression(max_depth=max_depth - 1)))

@@ -70,6 +70,6 @@ Todo:
     * [x] class definition
 * [ ] Async and await
     * [x] async function definition
-    * [ ] await expression
+    * [x] await expression
     * [ ] async for loop
     * [ ] async context managers
