@@ -61,13 +61,13 @@ Todo:
     * [x] continue
     * [x] try blocks
     * [x] context managers
-* [ ] Function and class definitions
+* [x] Function and class definitions
     * [x] function definition
     * [x] lambda function
     * [x] return statement
     * [x] yield, yield from
     * [x] global, nonlocal
-    * [ ] class definition
+    * [x] class definition
 * [ ] Async and await
     * [ ] async function definition
     * [ ] await expression

@@ -2,7 +2,7 @@ import ast
 import random
 
 from variable import generate_variable, generate_variable_name
-from expression import generate_expression
+from expression import generate_expression, _generate_keyword
 
 
 def generate_function_def(max_depth=None):
@@ -44,3 +44,22 @@ def _generate_arg(max_depth=None):
     name = generate_variable_name()
     annotation = random.choice([generate_variable()] + [None] * 4)
     return ast.arg(name, annotation)
+
+
+def generate_class_def(max_depth=None):
+    from control_flow import generate_block
+    name = generate_variable_name()
+
+    num_bases = random.choice([0, 0, 0, 1, 1, 2])
+    bases = [generate_variable() for _ in range(num_bases)]
+
+    keywords = []
+    if random.choice([True, False, False, False, False]):
+        value = generate_variable()
+        keywords = [ast.keyword(arg='metaclass', value=value)]
+
+    body = generate_block(max_depth=max_depth - 1)
+
+    num_decorators = random.choice([0, 0, 0, 0, 0, 1, 1, 2])
+    decorator_list = [generate_variable() for _ in range(num_decorators)]
+    return ast.ClassDef(name, bases, keywords, body, decorator_list)
