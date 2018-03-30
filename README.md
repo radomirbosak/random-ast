@@ -71,5 +71,5 @@ Todo:
 * [ ] Async and await
     * [x] async function definition
     * [x] await expression
-    * [ ] async for loop
+    * [x] async for loop
     * [ ] async context managers

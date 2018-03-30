@@ -29,6 +29,7 @@ def generate_block(max_depth=None):
             generate_function_def,
             generate_class_def,
             generate_async_function_def,
+            generate_async_for,
         ]
 
     nodes = random.choices(choices, k=num_statements)
@@ -80,8 +81,17 @@ def _generate_with_item(max_depth=None):
     optional_vars = generate_variable_or_tuple()
     return ast.withitem(context_expr, optional_vars)
 
+
 def generate_with(max_depth=None):
     num_items = random.randrange(1, 3)
     items = [_generate_with_item(max_depth=max_depth) for _ in range(num_items)]
     body = generate_block(max_depth=max_depth)
     return ast.With(items, body)
+
+
+def generate_async_for(max_depth=None):
+    target = generate_variable_or_tuple()
+    iter = generate_expression(max_depth=max_depth)
+    body = generate_block(max_depth=max_depth)
+    orelse = random.choice([generate_block(max_depth=max_depth), []])
+    return ast.AsyncFor(target, iter, body, orelse)
