@@ -69,7 +69,7 @@ Todo:
     * [x] global, nonlocal
     * [x] class definition
 * [ ] Async and await
-    * [ ] async function definition
+    * [x] async function definition
     * [ ] await expression
     * [ ] async for loop
     * [ ] async context managers

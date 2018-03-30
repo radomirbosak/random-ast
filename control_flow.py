@@ -5,7 +5,7 @@ from words import generate_variable_name
 from variable import generate_variable_or_tuple
 from expression import generate_expression
 from statement import generate_statement
-from function_class import generate_function_def, generate_class_def
+from function_class import generate_function_def, generate_class_def, generate_async_function_def
 
 
 MAX_STATEMENTS = 5
@@ -28,6 +28,7 @@ def generate_block(max_depth=None):
             generate_with,
             generate_function_def,
             generate_class_def,
+            generate_async_function_def,
         ]
 
     nodes = random.choices(choices, k=num_statements)

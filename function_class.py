@@ -63,3 +63,18 @@ def generate_class_def(max_depth=None):
     num_decorators = random.choice([0, 0, 0, 0, 0, 1, 1, 2])
     decorator_list = [generate_variable() for _ in range(num_decorators)]
     return ast.ClassDef(name, bases, keywords, body, decorator_list)
+
+
+def generate_async_function_def(max_depth=None):
+    from control_flow import generate_block
+
+    name = generate_variable_name()
+    args = _generate_arguments(max_depth=max_depth)
+    body = generate_block(max_depth=max_depth)
+
+    num_decorators = random.choice([0, 0, 0, 0, 0, 1, 1, 2])
+    decorator_list = [generate_variable() for _ in range(num_decorators)]
+
+    returns = random.choice([generate_variable()] + [None] * 4)
+
+    return ast.AsyncFunctionDef(name, args, body, decorator_list, returns)
