@@ -9,7 +9,25 @@ Resources:
 * [ast module documentation](https://docs.python.org/3/library/ast.html)
 * [better AST docs](https://greentreesnakes.readthedocs.io/en/latest/)
 
-Todo:
+## Usage
+
+```bash
+python3 randast.py
+```
+
+Don't forget to activate the virtualenv before running the program
+
+```console
+pipenv shell
+```
+
+## Installation
+
+```console
+pipenv install
+```
+
+## Supported syntax
 
 * [x] Literals
     * [x] number
